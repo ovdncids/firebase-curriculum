@@ -1,4 +1,4 @@
 ## Download
-[Vue.js](/download/vue.zip)
+[Vue.js](/Download/vue.zip)
 
-[Express](/download/express.zip)
+[Express](/Download/express.zip)
