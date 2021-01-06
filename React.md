@@ -7,7 +7,7 @@ Database 규칙
   "rules": {
     "member": {
       ".read": true,
-    	".write": true
+      ".write": true
     }
   }
 }
