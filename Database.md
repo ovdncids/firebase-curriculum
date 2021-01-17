@@ -1,11 +1,5 @@
 # Firebase Realtime Database
 
-## Firebase Polyfill for IE11
-```html
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-<script src="https://unpkg.com/core-js-bundle@3.6.0/minified.js"></script>
-```
-
 ## Html
 index.html
 ```html
@@ -55,5 +49,11 @@ const firebaseOnce = function() {
   }
   firebase.database().ref('members').once('value', f);
 };
+
 firebaseOn();
+```
+
+## Firebase Polyfill for IE11
+```html
+<script src="https://unpkg.com/core-js-bundle@3.6.0/minified.js"></script>
 ```
