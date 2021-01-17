@@ -19,42 +19,41 @@ index.html
 ## Javascript
 ./js/index.js
 ```js
-function firebaseUpdate() {
+const firebaseUpdate = function() {
   const members = {
     member1: '홍길동',
     member2: '심춘향'
-  }
-  firebase.database().ref('members').update(members)
-  console.warn('수정 완료')
-}
+  };
+  firebase.database().ref('members').update(members);
+  console.warn('수정 완료');
+};
 
-function firebaseRemove() {
-  firebase.database().ref('members/member1').remove()
-  console.warn('삭제 완료')
-}
+const firebaseRemove = function() {
+  firebase.database().ref('members/member1').remove();
+  console.warn('삭제 완료');
+};
 
-function firebaseOn() {
+const firebaseOn = function() {
   const f = function(data) {
-    console.log(data.val())
-    console.warn('알람')
+    console.log(data.val());
+    console.warn('알람');
   }
-  window.firebaseAlarm = firebase.database().ref('members')
-  window.firebaseAlarm.on('value', f)
-  console.warn('구독 완료')
-}
+  window.firebaseAlarm = firebase.database().ref('members');
+  window.firebaseAlarm.on('value', f);
+  console.warn('구독 완료');
+};
 
-function firebaseOff() {
-  window.firebaseAlarm.off()
-  console.error('구독 취소')
-}
+const firebaseOff = function() {
+  window.firebaseAlarm.off();
+  console.error('구독 취소');
+};
 
-function firebaseOnce() {
+const firebaseOnce = function() {
   const f = function(data) {
-    console.log(data.val())
-    console.warn('일회성 조회')
+    console.log(data.val());
+    console.warn('일회성 조회');
   }
-  firebase.database().ref('members').once('value', f)
-}
-
-firebaseOn()
+  firebase.database().ref('members').once('value', f);
+};
+firebaseOn();
 ```
