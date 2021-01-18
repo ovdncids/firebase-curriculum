@@ -66,8 +66,8 @@ const create = function() {
     name: document.getElementById('member-name').value,
     age: document.getElementById('member-age').value
   };
-  axios.post('https://[PROJECT_ID].firebaseio.com/members.json', member).then(function(xhr) {
-    console.log(xhr.data);
+  axios.post('https://[PROJECT_ID].firebaseio.com/members.json', member).then(function(response) {
+    console.log(response.data);
     read();
   });
 };
@@ -76,9 +76,9 @@ const create = function() {
 ## Read
 ```js
 const read = function() {
-  axios.get('https://[PROJECT_ID].firebaseio.com/members.json').then(function(xhr) {
-    console.log(xhr.data);
-    const members = xhr.data;
+  axios.get('https://[PROJECT_ID].firebaseio.com/members.json').then(function(response) {
+    console.log(response.data);
+    const members = response.data;
     const tbodyMembers = document.getElementById('tbody-members');
     const tbodyTemplateMembers = document.getElementById('tbody-template-members');
     while (tbodyMembers.children.length) {
@@ -116,8 +116,8 @@ const update = function(event) {
     name: document.getElementsByName('member-name')[i].value,
     age: document.getElementsByName('member-age')[i].value
   };
-  axios.patch('[PROJECT_ID].firebaseio.com/members.json', member).then(function(xhr) {
-    console.log(xhr.data);
+  axios.patch('[PROJECT_ID].firebaseio.com/members.json', member).then(function(response) {
+    console.log(response.data);
     read();
   });
 };
@@ -135,8 +135,8 @@ const del = function(event) {
       break;
     }
   }
-  axios.delete('[PROJECT_ID].firebaseio.com/members/' + key + '.json').then(function(xhr) {
-    console.log(xhr.data);
+  axios.delete('[PROJECT_ID].firebaseio.com/members/' + key + '.json').then(function(response) {
+    console.log(response.data);
     read();
   });
 };
