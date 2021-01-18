@@ -66,7 +66,7 @@ const create = function() {
     name: document.getElementById('member-name').value,
     age: document.getElementById('member-age').value
   };
-  axios.post('https://ovdncids-red-firebase-default-rtdb.firebaseio.com/members.json', member).then(function(xhr) {
+  axios.post('https://[PROJECT_ID].firebaseio.com/members.json', member).then(function(xhr) {
     console.log(xhr.data);
     read();
   });
@@ -76,7 +76,7 @@ const create = function() {
 ## Read
 ```js
 const read = function() {
-  axios.get('https://ovdncids-red-firebase-default-rtdb.firebaseio.com/members.json').then(function(xhr) {
+  axios.get('https://[PROJECT_ID].firebaseio.com/members.json').then(function(xhr) {
     console.log(xhr.data);
     const members = xhr.data;
     const tbodyMembers = document.getElementById('tbody-members');
@@ -116,7 +116,7 @@ const update = function(event) {
     name: document.getElementsByName('member-name')[i].value,
     age: document.getElementsByName('member-age')[i].value
   };
-  axios.patch('https://ovdncids-red-firebase-default-rtdb.firebaseio.com/members.json', member).then(function(xhr) {
+  axios.patch('[PROJECT_ID].firebaseio.com/members.json', member).then(function(xhr) {
     console.log(xhr.data);
     read();
   });
@@ -135,7 +135,7 @@ const del = function(event) {
       break;
     }
   }
-  axios.delete('https://ovdncids-red-firebase-default-rtdb.firebaseio.com/members/' + key + '.json').then(function(xhr) {
+  axios.delete('[PROJECT_ID].firebaseio.com/members/' + key + '.json').then(function(xhr) {
     console.log(xhr.data);
     read();
   });
