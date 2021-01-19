@@ -84,16 +84,16 @@ const read = function() {
     while (tbodyMembers.children.length) {
       tbodyMembers.removeChild(tbodyMembers.children[0]);
     }
-    let i = 0;
+    let index = 0;
     for (let key in members) {
       const member = members[key];
       const trMember = tbodyTemplateMembers.children[0].cloneNode(true);
       tbodyMembers.appendChild(trMember);
-      document.getElementsByName('member-name')[i].value = member.name;
-      document.getElementsByName('member-age')[i].value = member.age;
+      document.getElementsByName('member-name')[index].value = member.name;
+      document.getElementsByName('member-age')[index].value = member.age;
       trMember.children[2].innerHTML = member.createdDate;
-      document.getElementsByName('member-key')[i].value = key;
-      i++;
+      document.getElementsByName('member-key')[index].value = key;
+      index++;
     }
   });
 };
@@ -104,17 +104,17 @@ const read = function() {
 const update = function(event) {
   const memberUpdate = document.getElementsByName('member-update');
   const memberKey = document.getElementsByName('member-key');
-  let i = 0, key;
-  for (; i < memberUpdate.length; i += 1) {
-    if (event.srcElement === memberUpdate[i]) {
-      key = memberKey[i].value;
+  let index = 0, key;
+  for (; index < memberUpdate.length; index += 1) {
+    if (event.srcElement === memberUpdate[index]) {
+      key = memberKey[index].value;
       break;
     }
   }
   const member = {}
   member[key] = {
-    name: document.getElementsByName('member-name')[i].value,
-    age: document.getElementsByName('member-age')[i].value
+    name: document.getElementsByName('member-name')[index].value,
+    age: document.getElementsByName('member-age')[index].value
   };
   axios.patch('[PROJECT_ID].firebaseio.com/members.json', member).then(function(response) {
     console.log(response.data);
@@ -128,10 +128,10 @@ const update = function(event) {
 const del = function(event) {
   const memberDelete = document.getElementsByName('member-delete');
   const memberKey = document.getElementsByName('member-key');
-  let i = 0;
-  for (; i < memberDelete.length; i += 1) {
-    if (event.srcElement === memberDelete[i]) {
-      key = memberKey[i].value;
+  let index = 0;
+  for (; index < memberDelete.length; index += 1) {
+    if (event.srcElement === memberDelete[index]) {
+      key = memberKey[index].value;
       break;
     }
   }
