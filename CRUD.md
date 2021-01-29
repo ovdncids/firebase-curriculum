@@ -39,7 +39,7 @@ members.html
             <td><input type="text" placeholder="Age" name="members-age" /></td>
             <td></td>
             <td>
-              <button name="members-update" onclick="membersDelete(event)">Update</button>
+              <button name="members-update" onclick="membersUpdate(event)">Update</button>
               <button name="members-delete" onclick="membersDelete(event)">Delete</button>
               <input type="hidden" name="members-key" />
             </td>
@@ -101,7 +101,7 @@ const membersRead = function() {
 
 ## Update
 ```js
-const membersDelete = function(event) {
+const membersUpdate = function(event) {
   const membersUpdate = document.getElementsByName('members-update');
   const membersKey = document.getElementsByName('members-key');
   let key;
