@@ -39,9 +39,9 @@ members.html
             <td><input type="text" placeholder="Age" name="members-age" /></td>
             <td></td>
             <td>
-              <button name="members-update" onclick="membersUpdate(event)">Update</button>
-              <button name="members-delete" onclick="membersDelete(event)">Delete</button>
-              <input type="hidden" name="members-key" />
+              <button name="button-members-update" onclick="membersUpdate(event)">Update</button>
+              <button name="button-members-delete" onclick="membersDelete(event)">Delete</button>
+              <input type="hidden" name="input-members-key" />
             </td>
           </tr>
         </tbody>
