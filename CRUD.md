@@ -105,9 +105,7 @@ const membersUpdate = function(event) {
   const eventElement = event.currentTarget || event.srcElement;
   let index = 0;
   for (; index < document.getElementsByName(eventElement.name).length; index++) {
-    if (srcElement === document.getElementsByName(eventElement.name)[index]) {
-      break;
-    }
+    if (srcElement === document.getElementsByName(eventElement.name)[index]) break;
   }
   const member = {}
   member[document.getElementsByName('input-members-key')[index].value] = {
@@ -127,9 +125,7 @@ const membersDelete = function(event) {
   const eventElement = event.currentTarget || event.srcElement;
   let index = 0;
   for (; index < document.getElementsByName(eventElement.name).length; index++) {
-    if (srcElement === document.getElementsByName(eventElement.name)[index]) {
-      break;
-    }
+    if (srcElement === document.getElementsByName(eventElement.name)[index]) break;
   }
   const key = document.getElementsByName('input-members-key')[index].value;
   axios.delete('https://[PROJECT_ID].firebaseio.com/members/' + key + '.json').then(function(response) {
