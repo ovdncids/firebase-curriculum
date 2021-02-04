@@ -103,7 +103,6 @@ const membersRead = function() {
 ```js
 const membersUpdate = function(event) {
   const buttonMembersUpdate = document.getElementsByName('button-members-update');
-  const inputMembersKey = document.getElementsByName('input-members-key');
   let index = 0;
   for (; index < buttonMembersUpdate.length; index++) {
     if (event.currentTarget === buttonMembersUpdate[index]) {
