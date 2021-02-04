@@ -104,15 +104,14 @@ const membersRead = function() {
 const membersUpdate = function(event) {
   const buttonMembersUpdate = document.getElementsByName('button-members-update');
   const inputMembersKey = document.getElementsByName('input-members-key');
-  let index = 0, key;
+  let index = 0;
   for (; index < buttonMembersUpdate.length; index++) {
     if (event.currentTarget === buttonMembersUpdate[index]) {
-      key = inputMembersKey[index].value;
       break;
     }
   }
   const member = {}
-  member[key] = {
+  member[document.getElementsByName('input-members-key')[index].value] = {
     name: document.getElementsByName('members-name')[index].value,
     age: document.getElementsByName('members-age')[index].value
   };
@@ -127,14 +126,13 @@ const membersUpdate = function(event) {
 ```js
 const membersDelete = function(event) {
   const buttonMembersDelete = document.getElementsByName('button-members-delete');
-  const inputMembersKey = document.getElementsByName('input-members-key');
-  let key;
-  for (let index = 0; index < buttonMembersDelete.length; index++) {
+  let index = 0;
+  for (; index < buttonMembersDelete.length; index++) {
     if (event.currentTarget === buttonMembersDelete[index]) {
-      key = inputMembersKey[index].value;
       break;
     }
   }
+  const key = document.getElementsByName('input-members-key')[index].value;
   axios.delete('https://[PROJECT_ID].firebaseio.com/members/' + key + '.json').then(function(response) {
     console.log(response.data);
     membersRead();
