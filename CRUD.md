@@ -28,8 +28,7 @@ members.html
             <th>Modify</th>
           </tr>
         </thead>
-        <tbody id="tbody-members">
-        </tbody>
+        <tbody id="tbody-members"></tbody>
       </table>
       <table style="display: none;">
         <tbody id="tbody-template-members">
