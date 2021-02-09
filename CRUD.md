@@ -36,8 +36,8 @@ members.html
             <td name="members-name"></td>
             <td><input type="text" placeholder="Age" name="members-age" /></td>
             <td>
-              <button name="button-members-update" onclick="membersUpdate(event)">Update</button>
-              <button name="button-members-delete" onclick="membersDelete(event)">Delete</button>
+              <button name="members-update" onclick="memberUpdate(event)">Update</button>
+              <button name="members-delete" onclick="memberDelete(event)">Delete</button>
               <input type="hidden" name="members-key" />
             </td>
           </tr>
@@ -49,7 +49,7 @@ members.html
       <h2>Create</h2>
       <input type="text" placeholder="Name" id="member-name" />
       <input type="text" placeholder="Age" id="member-age" />
-      <button onclick="membersCreate()">Create</button>
+      <button onclick="memberCreate()">Create</button>
     </div>
   </body>
 </html>
@@ -58,13 +58,13 @@ members.html
 ## Create
 ./js/members.js
 ```js
-const membersCreate = function() {
+const memberCreate = function() {
   const member = {
     name: document.getElementById('member-name').value,
     age: document.getElementById('member-age').value
   };
   axios.post('https://[PROJECT_ID].firebaseio.com/members.json', member).then(function(response) {
-    console.log('Done membersCreate', response.data);
+    console.log('Done memberCreate', response.data);
     membersRead();
   });
 };
@@ -87,8 +87,8 @@ const membersRead = function() {
       document.getElementsByName('members-name')[index].innerHTML = member.name;
       document.getElementsByName('members-age')[index].value = member.age;
       document.getElementsByName('members-key')[index].value = key;
-      document.getElementsByName('button-members-update')[index].index = index;
-      document.getElementsByName('button-members-delete')[index].index = index;
+      document.getElementsByName('members-update')[index].index = index;
+      document.getElementsByName('members-delete')[index].index = index;
       index++;
     }
     console.log('Done membersRead', response.data);
@@ -98,7 +98,7 @@ const membersRead = function() {
 
 ## Update
 ```js
-const membersUpdate = function(event) {
+const memberUpdate = function(event) {
   const index = event.currentTarget.index;
   const member = {}
   member[document.getElementsByName('members-key')[index].value] = {
@@ -106,7 +106,7 @@ const membersUpdate = function(event) {
     age: document.getElementsByName('members-age')[index].value
   };
   axios.patch('https://[PROJECT_ID].firebaseio.com/members.json', member).then(function(response) {
-    console.log('Done membersUpdate', response.data);
+    console.log('Done memberUpdate', response.data);
     membersRead();
   });
 };
@@ -114,11 +114,11 @@ const membersUpdate = function(event) {
 
 ## Delete
 ```js
-const membersDelete = function(event) {
+const memberDelete = function(event) {
   const index = event.currentTarget.index;
   const key = document.getElementsByName('members-key')[index].value;
   axios.delete('https://[PROJECT_ID].firebaseio.com/members/' + key + '.json').then(function(response) {
-    console.log('Done membersDelete', response.data);
+    console.log('Done memberDelete', response.data);
     membersRead();
   });
 };
