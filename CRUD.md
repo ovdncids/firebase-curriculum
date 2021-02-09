@@ -31,8 +31,8 @@ members.html
         <tbody id="tbody-members"></tbody>
       </table>
       <table style="display: none;">
-        <tbody id="tbody-template-members">
-          <tr>
+        <tbody>
+          <tr id="tr-template-members">
             <td name="members-name"></td>
             <td><input type="text" placeholder="Age" name="members-age" /></td>
             <td>
@@ -77,14 +77,13 @@ const membersRead = function() {
     console.log('Done membersRead', response.data);
     const members = response.data;
     const tbody = document.getElementById('tbody-members');
-    const tbodyTemplate = document.getElementById('tbody-template-members');
     while (tbody.children.length) {
       tbody.removeChild(tbody.children[0]);
     }
     let index = 0;
     for (let key in members) {
       const member = members[key];
-      const tr = tbodyTemplate.children[0].cloneNode(true);
+      const tr = document.getElementById('tr-template-members').cloneNode(true);
       tbody.appendChild(tr);
       document.getElementsByName('members-name')[index].innerHTML = member.name;
       document.getElementsByName('members-age')[index].value = member.age;
