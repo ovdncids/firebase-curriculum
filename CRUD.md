@@ -74,7 +74,6 @@ const membersCreate = function() {
 ```js
 const membersRead = function() {
   axios.get('https://[PROJECT_ID].firebaseio.com/members.json').then(function(response) {
-    console.log('Done membersRead', response.data);
     const members = response.data;
     const tbody = document.getElementById('tbody-members');
     while (tbody.children.length) {
@@ -92,6 +91,7 @@ const membersRead = function() {
       document.getElementsByName('button-members-delete')[index].index = index;
       index++;
     }
+    console.log('Done membersRead', response.data);
   });
 };
 ```
