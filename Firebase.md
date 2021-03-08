@@ -21,36 +21,34 @@ https://console.firebase.google.com
 ### 프로젝트 초기화
 ```sh
 firebase init
-  # ? Which Firebase CLI features do you want to setup for this folder? Press Space to select features, then Enter to confirm your choices. (Press <space> to select)
-    # Database
-    # Functions
-    # Hosting
-  # ? Select a default Firebase project for this directory: (Use arrow keys)
-    # 생성한 프로젝트
-  # ? What file should be used for Database Rules? (database.rules.json)
-    # 엔터
-  # ? What language would you like to use to write Cloud Functions? (Use arrow keys)
-    # JavaScript
-  # ? Do you want to use ESLint to catch probable bugs and enforce style? (y/N)
-    # N
-  # ? Do you want to install dependencies with npm now? (Y/n)
+  Are you ready to proceed?
     # Y
-  # ? What do you want to use as your public directory? (public)
-    # 엔터
-  # ? Configure as a single-page app (rewrite all urls to /index.html)? (y/N)
+  Which Firebase CLI features do you want to set up for this folder? Press Space to select features, then Enter to confirm your choices.
+    # Database
+    # Hosting
+  Please select an option:
+    # Use an existing project (이미 생성된 프로젝트일 경우)
+    # Create a new project (새로 생성한 프로젝트일 경우)
+  Select a default Firebase project for this directory:
+    # Firebase에서 만들 프로젝트 선택
+  What file should be used for Realtime Database Security Rules?
+    # 기본 database.rules.json 엔터
+  What do you want to use as your public directory?
+    # public 경로 선택 (React는 build, Vue.js는 dist)
+  Configure as a single-page app (rewrite all urls to /index.html)?
+    # single-page app이면 Y, 아니면 N
+  Set up automatic builds and deploys with GitHub?
     # N
-
+  File build/index.html already exists. Overwrite?
+    # N
+```
+```sh
 # 현재 프로젝트 보기
 firebase use
-# 콘솔에 등록 되어 있는 프로젝트 보기
-firebase list
+
 # 선택된 프로젝트 콘솔 및 여러 도움이 되는 URL 페이지에 빠르게 접속하기
 firebase open
 firebase open hosting:site
-```
-```sh
-# git 초기화
-git init
 ```
 
 ### 로컬 서버 실행
@@ -59,25 +57,6 @@ git init
 firebase serve --only hosting
 firebase serve --only hosting --port=5000
 ```
-
-## Firebase Hosting
-### Vue.js 프로젝트 가지고 오기
-/vue 디렉토리에 Vue.js 프로젝트를 복사
-
-/firebase.json
-```diff
-- "public": "public",
-+ "public": "vue/dist",
-```
-
-/vue
-```sh
-npm install
-npm run serve
-npm run build
-```
-
-/public 디렉토리 삭제
 
 ### 배포
 ```sh
