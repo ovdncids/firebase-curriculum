@@ -31,10 +31,11 @@ firebase init
     # Create a new project (새로 생성한 프로젝트일 경우)
   Select a default Firebase project for this directory:
     # Firebase에서 만들 프로젝트 선택
-  What file should be used for Realtime Database Security Rules?
-    # 기본 database.rules.json 엔터
   It seems like you haven’t initialized Realtime Database in your project yet. Do you want to set it up?
     # 리얼타임 데이터베이스의 초기화 Y
+    # us-central1
+  What file should be used for Realtime Database Security Rules?
+    # 기본 database.rules.json 엔터
   What do you want to use as your public directory?
     # public 경로 선택 (React는 build, Vue.js는 dist)
   Configure as a single-page app (rewrite all urls to /index.html)?
