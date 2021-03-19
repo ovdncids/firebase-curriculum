@@ -36,8 +36,8 @@ members.html
             <td name="members-name"></td>
             <td><input type="text" placeholder="Age" name="members-age" /></td>
             <td>
-              <button name="members-update" onclick="membersUpdate(event)">Update</button>
-              <button name="members-delete" onclick="membersDelete(event)">Delete</button>
+              <button name="members-update" onclick="membersUpdate(index)">Update</button>
+              <button name="members-delete" onclick="membersDelete(index)">Delete</button>
               <input type="hidden" name="members-key" />
             </td>
           </tr>
@@ -98,8 +98,7 @@ const membersRead = function() {
 
 ## Update
 ```js
-const membersUpdate = function(event) {
-  const index = event.currentTarget.index;
+const membersUpdate = function(index) {
   const member = {}
   member[document.getElementsByName('members-key')[index].value] = {
     name: document.getElementsByName('members-name')[index].innerHTML,
@@ -114,8 +113,7 @@ const membersUpdate = function(event) {
 
 ## Delete
 ```js
-const membersDelete = function(event) {
-  const index = event.currentTarget.index;
+const membersDelete = function(index) {
   const key = document.getElementsByName('members-key')[index].value;
   axios.delete('https://[PROJECT_ID].firebaseio.com/members/' + key + '.json').then(function(response) {
     console.log('Done membersDelete', response.data);
