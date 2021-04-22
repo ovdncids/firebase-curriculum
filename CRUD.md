@@ -99,12 +99,12 @@ const membersRead = function() {
 ## Update
 ```js
 const membersUpdate = function(index) {
-  const member = {}
-  member[document.getElementsByName('members-key')[index].value] = {
+  const memberUpdate = {}
+  memberUpdate[document.getElementsByName('members-key')[index].value] = {
     name: document.getElementsByName('members-name')[index].innerHTML,
     age: document.getElementsByName('members-age')[index].value
   };
-  axios.patch('https://[PROJECT_ID].firebaseio.com/members.json', member).then(function(response) {
+  axios.patch('https://[PROJECT_ID].firebaseio.com/members.json', memberUpdate).then(function(response) {
     console.log('Done membersUpdate', response.data);
     membersRead();
   });
