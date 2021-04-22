@@ -77,9 +77,7 @@ const membersRead = function() {
     console.log('Done membersRead', response.data);
     const members = response.data;
     const tbody = document.getElementById('tbody-members');
-    while (tbody.children.length) {
-      tbody.removeChild(tbody.children[0]);
-    }
+    tbody.innerHTML = '';
     let index = 0;
     for (let key in members) {
       const member = members[key];
