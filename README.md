@@ -8,4 +8,6 @@
 
 * [React with Firebase](React.md)
 
+* [Login](Login.md)
+
 * [Functions](Functions.md)
