@@ -1,4 +1,4 @@
-# CRUD (Create, Read, Update, Delete)
+# Firebase CRUD (Create, Read, Update, Delete)
 
 ## Firebase 데이터베이스 REST API
 https://firebase.google.com/docs/reference/rest/database
