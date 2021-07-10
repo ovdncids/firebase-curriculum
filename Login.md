@@ -88,6 +88,9 @@ const emailSignin = function(form) {
 ```
 
 ## React or Vue.js
+```
+npm install firebase
+```
 ```js
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
