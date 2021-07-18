@@ -71,7 +71,7 @@ const googleLogin = function() {
 const emailSignup = function(form) {
   const email = form['signup-email'].value
   const password = form['signup-password'].value
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     console.error(error);
     alert(error.message);
   });
@@ -80,7 +80,7 @@ const emailSignup = function(form) {
 const emailSignin = function(form) {
   const email = form['signin-email'].value
   const password = form['signin-password'].value
-  firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     console.error(error);
     alert(error.message);
   });
