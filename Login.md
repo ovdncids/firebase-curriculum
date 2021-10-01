@@ -48,7 +48,7 @@ firebaseLogin.html
 </html>
 ```
 
-firebaseLogin.js
+js/firebaseLogin.js
 ```js
 firebase.auth().onAuthStateChanged(function(firebaseUser) {
   console.log(firebaseUser);
