@@ -20,7 +20,7 @@ npm install --save firebase
 
 index.js
 ```js
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/database';
 
 firebase.initializeApp({
@@ -39,7 +39,7 @@ firebase.initializeApp({
 ### create
 CRUDStore.js
 ```js
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 
 create(spinnerTarget) {
   ...
