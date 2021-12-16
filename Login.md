@@ -100,5 +100,6 @@ firebase.initializeApp({
 
 // version 9
 import firebase from 'firebase/compat/app'
+// import firebase from '@firebase/app-compat'
 import 'firebase/compat/auth'
 ```
