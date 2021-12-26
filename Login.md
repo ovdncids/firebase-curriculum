@@ -61,7 +61,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser) {
 
 const googleLogout = function() {
   firebase.auth().signOut();
-}
+};
 
 const googleLogin = function() {
   const provider = new firebase.auth.GoogleAuthProvider();
