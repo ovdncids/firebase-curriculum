@@ -9,3 +9,5 @@
 * [Realtime Database](Database.md)
 
 * [React with Firebase](React.md)
+
+* [Tips](Tips.md)
