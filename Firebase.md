@@ -59,6 +59,7 @@ firebase open hosting:site
 # 로컬 서버 실행
 firebase serve --only hosting
 firebase serve --only hosting --port=5000
+firebase serve --only hosting -o 127.0.0.1 --port=5000
 ```
 
 ### 배포
