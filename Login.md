@@ -92,14 +92,17 @@ const emailSignin = function(form) {
 npm install firebase
 ```
 ```js
-import firebase from 'firebase/app'
-import 'firebase/auth'
+// version 9
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
 firebase.initializeApp({
   ...
 });
 
-// version 9
-import firebase from 'firebase/compat/app'
+// old version
+import firebase from 'firebase/app'
+import 'firebase/auth'
+
+// version 9 another version
 // import firebase from '@firebase/app-compat'
-import 'firebase/compat/auth'
 ```
