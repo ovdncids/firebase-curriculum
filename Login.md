@@ -100,8 +100,8 @@ firebase.initializeApp({
 });
 
 // old version
-import firebase from 'firebase/app'
-import 'firebase/auth'
+// import firebase from 'firebase/app'
+// import 'firebase/auth'
 
 // version 9 another version
 // import firebase from '@firebase/app-compat'
