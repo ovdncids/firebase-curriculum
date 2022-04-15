@@ -106,3 +106,31 @@ firebase.initializeApp({
 // version 9 another version
 // import firebase from '@firebase/app-compat'
 ```
+
+## Promise React
+FirebaseStore.js
+
+```js
+// Firebase 설정을 스토어에서 한다.
+export default class FirebaseStore {
+  firebaseUser = null;
+  firebaseLoginPromise = null;
+  constructor() {
+    this.firebaseLoginPromise = new Promise(resolve => {
+      firebase.auth().onAuthStateChanged(firebaseUser => {
+        this.firebaseUser = firebaseUser;
+        resolve();
+      });
+    });
+  }
+}
+```
+
+component.js
+```js
+useEffect(() => {
+  firebaseLoginPromise.then(() => {
+    // 비지니스 로직
+  });
+}, [firebaseLoginPromise]);
+```
