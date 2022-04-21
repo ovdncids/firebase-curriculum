@@ -107,7 +107,7 @@ firebase.initializeApp({
 // import firebase from '@firebase/app-compat'
 ```
 
-## Promise React
+## Login Promise for React
 FirebaseStore.js
 
 ```js
