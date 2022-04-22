@@ -143,6 +143,7 @@ if (firebaseUser) {
   this.firebaseUser = firebaseUser;
   resolve();
 } else if (this.firebaseUser) {
+  // 로그인 되어 있다면 로그아웃 실행
   alert('로그아웃 되었습니다.');
   window.location.href = '/';
 }
