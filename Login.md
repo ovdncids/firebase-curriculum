@@ -118,8 +118,10 @@ export default class FirebaseStore {
   constructor() {
     this.firebaseLoginPromise = new Promise(resolve => {
       firebase.auth().onAuthStateChanged(firebaseUser => {
-        this.firebaseUser = firebaseUser;
-        resolve();
+        if (firebaseUser) {
+          this.firebaseUser = firebaseUser;
+          resolve();
+        }
       });
     });
   }
@@ -133,4 +135,15 @@ useEffect(() => {
     // 비지니스 로직
   });
 }, [firebaseLoginPromise]);
+```
+
+### Logout
+```js
+if (firebaseUser) {
+  this.firebaseUser = firebaseUser;
+  resolve();
+} else if (this.firebaseUser) {
+  alert('로그아웃 되었습니다.');
+  window.location.href = '/';
+}
 ```
