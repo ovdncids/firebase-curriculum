@@ -17,7 +17,7 @@ public/index.html
 * https://firebase.google.com/docs/auth/web/phone-auth?authuser=0&hl=ko#web-version-9_1
 * https://firebase.google.com/docs/auth/web/manage-users?hl=ko
 
-src/main.vue
+src/main.js
 ```js
 import { initializeApp } from "firebase/app";
 
