@@ -6,7 +6,7 @@
 
 * [Login](Login.md)
 
-* [Login Phone](LoginPhone.md)
+* [Login Phone (Firebase 9)](LoginPhone.md)
 
 * [Realtime Database](Database.md)
 
