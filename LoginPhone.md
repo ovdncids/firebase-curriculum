@@ -107,7 +107,9 @@ export default {
             displayName: '테스트 유저'
           }).then(() => {
             // 이메일 변경
-            updateEmail(this.auth.currentUser, 'test@test.com')
+            updateEmail(this.auth.currentUser, 'test@test.com').catch(error => {
+              console.error('현 사이트에 동일한 이메일 있음', error)
+            })
             this.displayName = '테스트 유저'
           })
         }
