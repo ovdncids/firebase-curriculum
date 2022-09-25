@@ -6,6 +6,8 @@
 
 * [Login](Login.md)
 
+* [Login Phone](LoginPhone.md)
+
 * [Realtime Database](Database.md)
 
 * [React with Firebase](React.md)
