@@ -74,7 +74,7 @@ export default {
         size: 'normal',
         callback: () => {
           signInWithPhoneNumber(this.auth, '+1 650-555-1234', recaptchaVerifier)
-          // signInWithPhoneNumber(auth, '+82 010-0000-0000', recaptchaVerifier)
+          // signInWithPhoneNumber(this.auth, '+82 010-0000-0000', recaptchaVerifier)
           .then(confirmationResult => {
             console.log('정상 SMS 전송')
             this.confirmationResult = confirmationResult
