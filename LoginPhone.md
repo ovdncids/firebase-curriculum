@@ -1,11 +1,12 @@
-# Firebase Login Phone (Firebase 9)
+# Firebase 9 for Vue.js (Firebase Login Phone, Realtime Database)
 
-## Firebase Console에서 Auth 활성화
+## Firebase Login Phone
+### Firebase Console에서 Auth 활성화
 * Authentication > Sign-in method > 전화
 * 테스트용 전화번호: `+1 650-555-1234`
 * 테스트용 인증코드: `123456`
 
-## reCAPTCHA 라이브러리
+### reCAPTCHA 라이브러리
 * https://developers.google.com/recaptcha/docs/display
 
 public/index.html
@@ -13,13 +14,13 @@ public/index.html
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 ```
 
-## Vue.js
+### Firebase Login Phone
 * https://firebase.google.com/docs/auth/web/phone-auth?authuser=0&hl=ko#web-version-9_1
 * https://firebase.google.com/docs/auth/web/manage-users?hl=ko
 
 src/main.js
 ```js
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app'
 
 initializeApp({
   apiKey: '...',
@@ -131,6 +132,103 @@ export default {
         this.displayName = ''
       }
     })
+  }
+}
+</script>
+```
+
+## Realtime Database
+src/main.js
+```js
+import { initializeApp } from 'firebase/app'
+import { getDatabase } from 'firebase/database'
+
+const firebaseInitializeApp = initializeApp({
+  apiKey: '...',
+  ...
+})
+getDatabase(firebaseInitializeApp)
+```
+
+src/App.vue
+```vue
+<template>
+  <div>
+    <button @click='firebaseCreateSet()'>Create Set (모두 삭제하고 생성)</button>
+    <button @click='firebaseCreatePush()'>Create Push (고유 키를 생성하며 데이터 생성)</button>
+    <button @click='firebaseRead()'>Read</button>
+    <button @click='firebaseDelete()'>Delete</button>
+    <button @click='firebaseUpdate()'>Update (해당 부분만 수정)</button>
+  </div>
+</template>
+
+<script>
+import { getAuth } from 'firebase/auth'
+import { getDatabase, ref, set, push, query, onValue, orderByChild, equalTo, off, remove, update } from 'firebase/database'
+
+export default {
+  data: () => ({
+    auth: null,
+    db: null
+  }),
+  methods: {
+    firebaseCreateSet: function() {
+      set(ref(this.db, `members`), {
+        key1: {
+          name: '홍길동',
+          age: '39'
+        },
+        key2: {
+          name: '이순신',
+          age: '33'
+        },
+        key3: {
+          name: '홍명보',
+          age: '44'
+        },
+        key4: {
+          name: '박지삼',
+          age: '22'
+        },
+        [this.auth.currentUser?.uid]: {
+          name: '권명순',
+          age: '10'
+        },
+      })
+    },
+    firebaseCreatePush: function() {
+      push(ref(this.db, `members`), {
+        name: '춘향이',
+        age: '16'
+      })
+    },
+    firebaseRead: function() {
+      // const dbRef = query(ref(this.db, 'members'))
+      const dbRef = query(ref(this.db, 'members'), orderByChild('name'), equalTo('춘향이'))
+      onValue(dbRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          console.log(childSnapshot.key, childSnapshot.val())
+        })
+        off(dbRef)
+      }, {
+        onlyOnce: false
+      })
+    },
+    firebaseDelete: function() {
+      const key = 'key1'
+      remove(ref(this.db, `members/${key}`))
+    },
+    firebaseUpdate: function() {
+      const key = 'key2'
+      update(ref(this.db, `members/${key}/`), {
+        name: '충무공',
+        address: '광화문'
+      })
+    }
+  },
+  created() {
+    this.auth = getAuth()
+    this.db = getDatabase()
   }
 }
 </script>
