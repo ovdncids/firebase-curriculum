@@ -66,3 +66,18 @@ firebase serve --only hosting -o 127.0.0.1 --port=5000
 ```sh
 firebase deploy --only hosting
 ```
+
+#### SPA
+firebase.json
+```json
+{
+  "hosting": {
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
+```
