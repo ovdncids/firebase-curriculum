@@ -233,3 +233,25 @@ export default {
 }
 </script>
 ```
+
+<!--
+## FCM (Firebase Cloud Message)
+src/main.js
+```js
+import { initializeApp } from 'firebase/app'
+import { getMessaging } from 'firebase/messaging'
+
+const firebaseInitializeApp = initializeApp({
+  apiKey: '...',
+  ...
+})
+getMessaging(firebaseInitializeApp)
+```
+
+* [FCM Registration API 등록](https://console.cloud.google.com/apis/library/fcmregistrations.googleapis.com?authuser=4&hl=ko)
+
+### Firebase 설정
+```sh
+프로젝트 설정 > 클라우드 메시징 > 웹 구성 > Generate key pair > 키 쌍 생성됨
+```
+-->
