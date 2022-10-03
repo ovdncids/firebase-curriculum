@@ -195,12 +195,14 @@ export default {
           age: '10'
         },
       })
+      console.log('firebaseCreateSet')
     },
     firebaseCreatePush: function() {
       push(ref(this.db, `members`), {
         name: '춘향이',
         age: '16'
       })
+      console.log('firebaseCreatePush')
     },
     firebaseRead: function() {
       // const dbRef = query(ref(this.db, 'members'))
@@ -213,10 +215,12 @@ export default {
       }, {
         onlyOnce: false
       })
+      console.log('firebaseRead')
     },
     firebaseDelete: function() {
       const key = 'key1'
       remove(ref(this.db, `members/${key}`))
+      console.log('firebaseDelete')
     },
     firebaseUpdate: function() {
       const key = 'key2'
@@ -224,6 +228,7 @@ export default {
         name: '충무공',
         address: '광화문'
       })
+      console.log('firebaseUpdate')
     }
   },
   created() {
