@@ -208,6 +208,7 @@ export default {
       // const dbRef = query(ref(this.db, 'members'))
       const dbRef = query(ref(this.db, 'members'), orderByChild('name'), equalTo('춘향이'))
       onValue(dbRef, (snapshot) => {
+        console.log(snapshot.size)
         snapshot.forEach((childSnapshot) => {
           console.log(childSnapshot.key, childSnapshot.val())
         })
