@@ -140,7 +140,7 @@ export default {
 ## Firebase 익명 로그인
 src/App.vue
 ```js
-<button @click='signInAnonymously()'>익명 로그인</button>
+<button @click="signInAnonymously()">익명 로그인</button>
 
 import { getAuth, signInAnonymously } from 'firebase/auth'
 
@@ -180,11 +180,11 @@ src/App.vue
 ```vue
 <template>
   <div>
-    <button @click='firebaseCreateSet()'>Create Set (모두 삭제하고 생성)</button>
-    <button @click='firebaseCreatePush()'>Create Push (고유 키를 생성하며 데이터 생성)</button>
-    <button @click='firebaseRead()'>Read</button>
-    <button @click='firebaseDelete()'>Delete</button>
-    <button @click='firebaseUpdate()'>Update (해당 부분만 수정)</button>
+    <button @click="firebaseCreateSet()">Create Set (모두 삭제하고 생성)</button>
+    <button @click="firebaseCreatePush()">Create Push (고유 키를 생성하며 데이터 생성)</button>
+    <button @click="firebaseRead()">Read</button>
+    <button @click="firebaseDelete()">Delete</button>
+    <button @click="firebaseUpdate()">Update (해당 부분만 수정)</button>
   </div>
 </template>
 
