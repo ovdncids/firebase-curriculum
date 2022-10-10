@@ -137,6 +137,32 @@ export default {
 </script>
 ```
 
+## Firebase 익명 로그인
+src/App.vue
+```js
+<button @click='signInAnonymously()'>익명 로그인</button>
+
+import { getAuth, signInAnonymously } from 'firebase/auth'
+
+export default {
+  data: () => ({
+    auth: null
+  }),
+  methods: {
+    signInAnonymously: function() {
+      signInAnonymously(this.auth).then((user) => {
+        console.log(user)
+      }).catch((error) => {
+        console.error(error)
+      });
+    }
+  },
+  created() {
+    this.auth = getAuth()
+  }
+}
+```
+
 ## Realtime Database
 src/main.js
 ```js
