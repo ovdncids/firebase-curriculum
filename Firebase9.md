@@ -232,6 +232,7 @@ export default {
     },
     firebaseRead: function() {
       // const dbRef = query(ref(this.db, 'members'))
+      // const dbRef = query(ref(this.db, 'members'), orderByChild(`followers/${this.auth.currentUser?.uid}`))
       const dbRef = query(ref(this.db, 'members'), orderByChild('name'), equalTo('춘향이'))
       onValue(dbRef, (snapshot) => {
         console.log(snapshot.size)
