@@ -231,9 +231,10 @@ export default {
       console.log('firebaseCreatePush')
     },
     firebaseRead: function() {
-      // const dbRef = query(ref(this.db, 'members'))
-      // const dbRef = query(ref(this.db, 'members'), orderByChild(`followers/${this.auth.currentUser?.uid}`))
-      const dbRef = query(ref(this.db, 'members'), orderByChild('name'), equalTo('춘향이'))
+      // subscribe은 ref(this.db, `members/${this.auth.currentUser?.uid}`) 하나만 리턴 되는 것만 사용 한다.
+      // const dbRef = query(ref(this.db, 'members')) // 여러게 리턴
+      // const dbRef = query(ref(this.db, 'members'), orderByChild(`followers/${this.auth.currentUser?.uid}`)) // 여러게 리턴
+      const dbRef = query(ref(this.db, 'members'), orderByChild('name'), equalTo('춘향이')) // 여러게 리턴
       onValue(dbRef, (snapshot) => {
         console.log(snapshot.size)
         snapshot.forEach((childSnapshot) => {
