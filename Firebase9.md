@@ -137,12 +137,13 @@ export default {
 </script>
 ```
 
-## Firebase 익명 로그인
+## Firebase 익명 로그인, 로그아웃
 src/App.vue
 ```js
 <button @click="signInAnonymously()">익명 로그인</button>
+<button @click="signOut()">로그아웃</button>
 
-import { getAuth, signInAnonymously } from 'firebase/auth'
+import { getAuth, signInAnonymously, signOut } from 'firebase/auth'
 
 export default {
   data: () => ({
@@ -155,6 +156,9 @@ export default {
       }).catch((error) => {
         console.error(error)
       });
+    },
+    signOut: function() {
+      signOut(this.auth)
     }
   },
   created() {
