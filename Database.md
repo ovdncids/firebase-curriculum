@@ -14,16 +14,16 @@ index.html
 ./js/index.js
 ```js
 const firebaseUpdate = function() {
-  const members = {
-    member1: '홍길동',
-    member2: '심춘향'
+  const users = {
+    user1: '홍길동',
+    user2: '심춘향'
   };
-  firebase.database().ref('members').update(members);
+  firebase.database().ref('users').update(users);
   console.warn('수정 완료');
 };
 
 const firebaseRemove = function() {
-  firebase.database().ref('members/member1').remove();
+  firebase.database().ref('users/user1').remove();
   console.warn('삭제 완료');
 };
 
@@ -32,7 +32,7 @@ const firebaseOn = function() {
     console.log(data.val());
     console.warn('알람');
   }
-  window.firebaseAlarm = firebase.database().ref('members');
+  window.firebaseAlarm = firebase.database().ref('users');
   window.firebaseAlarm.on('value', f);
   console.warn('구독 완료');
 };
@@ -47,7 +47,7 @@ const firebaseOnce = function() {
     console.log(data.val());
     console.warn('일회성 조회');
   }
-  firebase.database().ref('members').once('value', f);
+  firebase.database().ref('users').once('value', f);
 };
 
 firebaseOn();

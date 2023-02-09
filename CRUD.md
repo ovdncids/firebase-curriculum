@@ -4,7 +4,7 @@
 https://firebase.google.com/docs/reference/rest/database
 
 ## Markup
-members.html
+users.html
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@ members.html
     <title>CRUD</title>
     <script src="https://unpkg.com/core-js-bundle@3.6.0/minified.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script defer src="./js/members.js"></script>
+    <script defer src="./js/users.js"></script>
   </head>
   <body>
     <h1>CRUD</h1>
@@ -28,17 +28,17 @@ members.html
             <th>Modify</th>
           </tr>
         </thead>
-        <tbody id="tbody-members"></tbody>
+        <tbody id="tbody-users"></tbody>
       </table>
       <table style="display: none;">
         <tbody>
-          <tr id="tr-template-members">
-            <td name="members-name"></td>
-            <td><input type="text" placeholder="Age" name="members-age" /></td>
+          <tr id="tr-template-users">
+            <td name="users-name"></td>
+            <td><input type="text" placeholder="Age" name="users-age" /></td>
             <td>
-              <button name="members-update" onclick="membersUpdate(index)">Update</button>
-              <button name="members-delete" onclick="membersDelete(index)">Delete</button>
-              <input type="hidden" name="members-key" />
+              <button name="users-update" onclick="usersUpdate(index)">Update</button>
+              <button name="users-delete" onclick="usersDelete(index)">Delete</button>
+              <input type="hidden" name="users-key" />
             </td>
           </tr>
         </tbody>
@@ -47,47 +47,47 @@ members.html
     <hr />
     <div>
       <h2>Create</h2>
-      <input type="text" placeholder="Name" id="member-name" />
-      <input type="text" placeholder="Age" id="member-age" />
-      <button onclick="membersCreate()">Create</button>
+      <input type="text" placeholder="Name" id="user-name" />
+      <input type="text" placeholder="Age" id="user-age" />
+      <button onclick="usersCreate()">Create</button>
     </div>
   </body>
 </html>
 ```
 
 ## Create
-./js/members.js
+./js/users.js
 ```js
-const membersCreate = function() {
-  const member = {
-    name: document.getElementById('member-name').value,
-    age: document.getElementById('member-age').value
+const usersCreate = function() {
+  const user = {
+    name: document.getElementById('user-name').value,
+    age: document.getElementById('user-age').value
   };
-  axios.post('https://[PROJECT_ID].firebaseio.com/members.json', member).then(function(response) {
-    console.log('Done membersCreate', response.data);
-    membersRead();
+  axios.post('https://[PROJECT_ID].firebaseio.com/users.json', user).then(function(response) {
+    console.log('Done usersCreate', response.data);
+    usersRead();
   });
 };
 ```
 
 ## Read
 ```js
-const membersRead = function() {
-  axios.get('https://[PROJECT_ID].firebaseio.com/members.json').then(function(response) {
-    console.log('Done membersRead', response.data);
-    const members = response.data;
-    const tbody = document.getElementById('tbody-members');
+const usersRead = function() {
+  axios.get('https://[PROJECT_ID].firebaseio.com/users.json').then(function(response) {
+    console.log('Done usersRead', response.data);
+    const users = response.data;
+    const tbody = document.getElementById('tbody-users');
     tbody.innerHTML = '';
     let index = 0;
-    for (let key in members) {
-      const member = members[key];
-      const tr = document.getElementById('tr-template-members').cloneNode(true);
+    for (let key in users) {
+      const user = users[key];
+      const tr = document.getElementById('tr-template-users').cloneNode(true);
       tbody.appendChild(tr);
-      document.getElementsByName('members-name')[index].innerHTML = member.name;
-      document.getElementsByName('members-age')[index].value = member.age;
-      document.getElementsByName('members-key')[index].value = key;
-      document.getElementsByName('members-update')[index].index = index;
-      document.getElementsByName('members-delete')[index].index = index;
+      document.getElementsByName('users-name')[index].innerHTML = user.name;
+      document.getElementsByName('users-age')[index].value = user.age;
+      document.getElementsByName('users-key')[index].value = key;
+      document.getElementsByName('users-update')[index].index = index;
+      document.getElementsByName('users-delete')[index].index = index;
       index++;
     }
   });
@@ -96,31 +96,31 @@ const membersRead = function() {
 
 ## Update
 ```js
-const membersUpdate = function(index) {
-  const memberUpdate = {}
-  memberUpdate[document.getElementsByName('members-key')[index].value] = {
-    name: document.getElementsByName('members-name')[index].innerHTML,
-    age: document.getElementsByName('members-age')[index].value
+const usersUpdate = function(index) {
+  const userUpdate = {}
+  userUpdate[document.getElementsByName('users-key')[index].value] = {
+    name: document.getElementsByName('users-name')[index].innerHTML,
+    age: document.getElementsByName('users-age')[index].value
   };
-  axios.patch('https://[PROJECT_ID].firebaseio.com/members.json', memberUpdate).then(function(response) {
-    console.log('Done membersUpdate', response.data);
-    membersRead();
+  axios.patch('https://[PROJECT_ID].firebaseio.com/users.json', userUpdate).then(function(response) {
+    console.log('Done usersUpdate', response.data);
+    usersRead();
   });
 };
 ```
 
 ## Delete
 ```js
-const membersDelete = function(index) {
-  const key = document.getElementsByName('members-key')[index].value;
-  axios.delete('https://[PROJECT_ID].firebaseio.com/members/' + key + '.json').then(function(response) {
-    console.log('Done membersDelete', response.data);
-    membersRead();
+const usersDelete = function(index) {
+  const key = document.getElementsByName('users-key')[index].value;
+  axios.delete('https://[PROJECT_ID].firebaseio.com/users/' + key + '.json').then(function(response) {
+    console.log('Done usersDelete', response.data);
+    usersRead();
   });
 };
 ```
 
 ## Finally
 ```js
-membersRead();
+usersRead();
 ```

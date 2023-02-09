@@ -5,7 +5,7 @@ Database 규칙
 ```json
 {
   "rules": {
-    "member": {
+    "user": {
       ".read": true,
       ".write": true
     }
@@ -45,9 +45,9 @@ create(spinnerTarget) {
   ...
 
   const spinner = utils.spinner().spin(spinnerTarget);
-  firebase.database().ref('member').push({
-    name: this.member.name,
-    age: Number(this.member.age),
+  firebase.database().ref('user').push({
+    name: this.user.name,
+    age: Number(this.user.age),
     createdDate: moment().format()
   }).then(response => {
     console.log(response);
@@ -62,21 +62,21 @@ create(spinnerTarget) {
 ### read
 ```js
 read() {
-  this.membersListener = firebase.database().ref('member');
-  this.membersListener.on('value', snapshot => {
+  this.usersListener = firebase.database().ref('user');
+  this.usersListener.on('value', snapshot => {
     utils.nProgress.start();
-    const members = _.map(snapshot.val(), (member, uid) => {
-      member.uid = uid;
-      return member;
+    const users = _.map(snapshot.val(), (user, uid) => {
+      user.uid = uid;
+      return user;
     });
-    this.members = _.orderBy(members, ['createdDate'], ['desc']);
+    this.users = _.orderBy(users, ['createdDate'], ['desc']);
     utils.nProgress.done();
   })
 }
 
 readOff() {
-  if (this.membersListener) {
-    this.membersListener.off();
+  if (this.usersListener) {
+    this.usersListener.off();
   }
 }
 
@@ -93,17 +93,17 @@ componentWillUnmount() {
 
 ### update
 ```diff
-- const member = this.members[key];
-+ const member = {
-+   ...this.members[key]
+- const user = this.users[key];
++ const user = {
++   ...this.users[key]
 + };
-+ delete member.uid;
++ delete user.uid;
 ```
 ```js
 update(spinnerTarget, key) {
   ...
   const spinner = utils.spinner().spin(spinnerTarget);
-  firebase.database().ref(`member/${this.members[key].uid}`).update(member).then(response => {
+  firebase.database().ref(`user/${this.users[key].uid}`).update(user).then(response => {
     console.log(response);
     spinner.stop();
     utils.toastr().success('Updated');
@@ -119,7 +119,7 @@ update(spinnerTarget, key) {
 delete() {
   ...
   const spinner = utils.spinner().spin(spinnerTarget);
-  firebase.database().ref(`member/${this.members[key].uid}`).remove().then(response => {
+  firebase.database().ref(`user/${this.users[key].uid}`).remove().then(response => {
     console.log(response);
     spinner.stop();
     utils.toastr().success('Deleted');

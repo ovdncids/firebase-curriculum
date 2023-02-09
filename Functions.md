@@ -51,7 +51,7 @@ firebase serve --only functions --port=5001
 ```
 
 #### 확인
-http://localhost:5001/.../.../httpsOnRequest/api/v1/member
+http://localhost:5001/.../.../httpsOnRequest/api/v1/user
 
 ### hosting과 연동
 furebase.json

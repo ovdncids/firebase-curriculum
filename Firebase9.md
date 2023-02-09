@@ -203,7 +203,7 @@ export default {
   }),
   methods: {
     firebaseCreateSet: function() {
-      set(ref(this.db, `members`), {
+      set(ref(this.db, `users`), {
         key1: {
           name: '홍길동',
           age: '39'
@@ -228,17 +228,17 @@ export default {
       console.log('firebaseCreateSet')
     },
     firebaseCreatePush: function() {
-      push(ref(this.db, `members`), {
+      push(ref(this.db, `users`), {
         name: '춘향이',
         age: '16'
       })
       console.log('firebaseCreatePush')
     },
     firebaseRead: function() {
-      // subscribe은 ref(this.db, `members/${this.auth.currentUser?.uid}`) 하나만 리턴 되는 것만 사용 한다.
-      // const dbRef = query(ref(this.db, 'members')) // 여러게 리턴
-      // const dbRef = query(ref(this.db, 'members'), orderByChild(`followers/${this.auth.currentUser?.uid}`)) // 여러게 리턴
-      const dbRef = query(ref(this.db, 'members'), orderByChild('name'), equalTo('춘향이')) // 여러게 리턴
+      // subscribe은 ref(this.db, `users/${this.auth.currentUser?.uid}`) 하나만 리턴 되는 것만 사용 한다.
+      // const dbRef = query(ref(this.db, 'users')) // 여러게 리턴
+      // const dbRef = query(ref(this.db, 'users'), orderByChild(`followers/${this.auth.currentUser?.uid}`)) // 여러게 리턴
+      const dbRef = query(ref(this.db, 'users'), orderByChild('name'), equalTo('춘향이')) // 여러게 리턴
       onValue(dbRef, (snapshot) => {
         console.log(snapshot.size)
         snapshot.forEach((childSnapshot) => {
@@ -252,12 +252,12 @@ export default {
     },
     firebaseDelete: function() {
       const key = 'key1'
-      remove(ref(this.db, `members/${key}`))
+      remove(ref(this.db, `users/${key}`))
       console.log('firebaseDelete')
     },
     firebaseUpdate: function() {
       const key = 'key2'
-      update(ref(this.db, `members/${key}/`), {
+      update(ref(this.db, `users/${key}/`), {
         name: '충무공',
         address: '광화문'
       })
