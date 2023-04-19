@@ -4,10 +4,10 @@
 * Authentication > Sign-in method > 이메일/비밀번호
 * Authentication > Sign-in method > Google
 * ❕ 비활성화인 경우 `caught (in promise) FirebaseError: Firebase: Error (auth/configuration-not-found).`
+* ❕ `firebase serve` 실행해야 `firebase 라이브러리`를 읽을 수 있다.
 ```sh
 firebase serve --only hosting
 ```
-* ❕ `firebase serve` 실행해야 `firebase 라이브러리`를 읽을 수 있다.
 
 ## Javascript
 firebaseLogin.html
