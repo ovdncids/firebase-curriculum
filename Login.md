@@ -30,18 +30,18 @@ firebaseLogin.html
     <button onclick="googleLogin()">Google Login</button>
   </div>
   <div>
-    <h2>Email Signup</h2>
-    <form onsubmit="emailSignup(this); return false;">
-      <input type="email" name="signup-email">
-      <input type="password" name="signup-password">
+    <h2>Email Sign up</h2>
+    <form onsubmit="emailSignUp(this); return false;">
+      <input type="email" name="signUp-email">
+      <input type="password" name="signUp-password">
       <input type="submit" value="Email Signup">
     </form>
   </div>
   <div>
-    <h2>Email Signin</h2>
-    <form onsubmit="emailSignin(this); return false;">
-      <input type="email" name="signin-email">
-      <input type="password" name="signin-password">
+    <h2>Email Sign in</h2>
+    <form onsubmit="emailSignIn(this); return false;">
+      <input type="email" name="signIn-email">
+      <input type="password" name="signIn-password">
       <input type="submit" value="Email Signin">
     </form>
   </div>
@@ -69,18 +69,18 @@ const googleLogin = function() {
   firebase.auth().signInWithPopup(provider);
 };
 
-const emailSignup = function(form) {
-  const email = form['signup-email'].value
-  const password = form['signup-password'].value
+const emailSignUp = function(form) {
+  const email = form['signUp-email'].value
+  const password = form['signUp-password'].value
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     console.error(error);
     alert(error.message);
   });
 };
 
-const emailSignin = function(form) {
-  const email = form['signin-email'].value
-  const password = form['signin-password'].value
+const emailSignIn = function(form) {
+  const email = form['signIn-email'].value
+  const password = form['signIn-password'].value
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     console.error(error);
     alert(error.message);
