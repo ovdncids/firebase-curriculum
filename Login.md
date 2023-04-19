@@ -3,6 +3,7 @@
 ## Firebase Console에서 Auth 활성화
 * Authentication > Sign-in method > 이메일/비밀번호
 * Authentication > Sign-in method > Google
+* ❕ 비활성화인 경우 `caught (in promise) FirebaseError: Firebase: Error (auth/configuration-not-found).`
 
 ## Javascript
 firebaseLogin.html
@@ -13,8 +14,8 @@ firebaseLogin.html
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Firebase Login</title>
-  <script defer src="/__/firebase/8.2.1/firebase-app.js"></script>
-  <script defer src="/__/firebase/8.2.1/firebase-auth.js"></script>
+  <script defer src="/__/firebase/9.20.0/firebase-app-compat.js"></script>
+  <script defer src="/__/firebase/9.20.0/firebase-auth-compat.js"></script>
   <script defer src="/__/firebase/init.js?useEmulator=true"></script>
   <script defer src="./js/firebaseLogin.js"></script>
 </head>
