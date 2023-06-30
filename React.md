@@ -20,10 +20,10 @@ npm install --save firebase
 
 index.js
 ```js
-import firebase from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import 'firebase/database';
 
-firebase.initializeApp({
+initializeApp({
   apiKey: "apiKey",
   authDomain: "authDomain",
   databaseURL: "databaseURL",
@@ -31,7 +31,6 @@ firebase.initializeApp({
   storageBucket: "storageBucket",
   messagingSenderId: "messagingSenderId"
 });
-
 ```
 
 ## CRUDStore 수정
