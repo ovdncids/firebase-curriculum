@@ -13,12 +13,7 @@ import {
 } from 'firebase/firestore';
 
 const app = initializeApp({
-  apiKey: 'AIzaSyC4lRHGrxpF-XFyKVcs6kWs-0Xk2tnAF6k',
-  authDomain: 'delete-min.firebaseapp.com',
-  projectId: 'delete-min',
-  storageBucket: 'delete-min.appspot.com',
-  messagingSenderId: '801891998036',
-  appId: '1:801891998036:web:72696deca712ac92c410c1'
+  ...
 });
 
 const db = getFirestore(app);
