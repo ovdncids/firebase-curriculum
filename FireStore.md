@@ -1,14 +1,61 @@
 # FireStore Database (Cloud FireStore)
-* https://firebase.google.com/docs/firestore/query-data/index-overview?authuser=0
-```js
-import firebase from 'firebase/app';
-import 'firebase/firestore';
 
-async function getItems() {
-  const snapshot = await firebase.firestore().collection('items').where('uid', '==', '유저 아이디').get();
-  snapshot.size;
-  snapshot.forEach((doc) => {
-    console.log(doc.data());
-  });
-}
+## CRUD
+* https://firebase.google.com/docs/firestore/manage-data/add-data?hl=ko&authuser=0
+* https://firebase.google.com/docs/firestore/manage-data/delete-data?hl=ko&authuser=0
+```js
+import { initializeApp } from 'firebase/app';
+import {
+  getFirestore, addDoc, collection,
+  updateDoc, doc, serverTimestamp,
+  arrayRemove, arrayUnion, increment,
+  deleteField, deleteDoc, getDocs
+} from 'firebase/firestore';
+
+const app = initializeApp({
+  apiKey: 'AIzaSyC4lRHGrxpF-XFyKVcs6kWs-0Xk2tnAF6k',
+  authDomain: 'delete-min.firebaseapp.com',
+  projectId: 'delete-min',
+  storageBucket: 'delete-min.appspot.com',
+  messagingSenderId: '801891998036',
+  appId: '1:801891998036:web:72696deca712ac92c410c1'
+});
+
+const db = getFirestore(app);
+
+const docRef = await addDoc(collection(db, 'users'), {
+  name: '홍길동',
+  age: 39
+});
+await addDoc(collection(db, 'users'), {
+  name: '김삼순',
+  age: 33
+});
+await updateDoc(doc(db, 'users', docRef.id), {
+  timestamp: serverTimestamp()
+})
+await updateDoc(doc(db, 'users', docRef.id), {
+  name: arrayRemove('홍길동') // name: '' 이렇게 변경됨
+})
+await updateDoc(doc(db, 'users', docRef.id), {
+  name: arrayUnion('홍길동', '이순신') // name: ['홍길동', '이순신']
+})
+await updateDoc(doc(db, 'users', docRef.id), {
+  age: increment(10) // age: 49
+})
+await updateDoc(doc(db, 'users', docRef.id), {
+  age: deleteField() // age 필드 삭제
+})
+await deleteDoc(doc(db, 'users', docRef.id));
+
+const querySnapshot = await getDocs(collection(db, 'users'));
+querySnapshot.forEach((doc) => {
+  console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+});
 ```
+
+## 정렬, 검색
+* https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=ko&authuser=0
+
+## 구독, 리슨
+* https://firebase.google.com/docs/firestore/query-data/listen?hl=ko&authuser=0
